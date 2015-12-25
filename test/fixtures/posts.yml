@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  content: MyText
+  reply_count: 1
+  view_count: MyString
+  topic_id: 
+  user_id: 
+  replies: 
+
+two:
+  title: MyString
+  content: MyText
+  reply_count: 1
+  view_count: MyString
+  topic_id: 
+  user_id: 
+  replies: 

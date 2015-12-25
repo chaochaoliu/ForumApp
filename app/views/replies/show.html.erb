@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @reply.content %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @reply.user %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @reply.post.title %>
+</p>
+
+<% if can? :update, @reply %>
+    <%= link_to 'Edit', edit_reply_path(@reply) %> 
+<% end %>
+<%= link_to 'Back', replies_path %>
