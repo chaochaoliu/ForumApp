@@ -3,22 +3,31 @@ class Ability
 
   def initialize(user)
     user ||= User.new # Guest user
-    user.role = Role.new(name: "Guest")
+    user.role = Role.new(name: "Guest") if user.role.nil?
     
     if user.admin?
       can :manage, :all
     elsif user.manager?
-        can :read, :all
+        can :read, Topic
+        can :read, Post
+        can :read, Reply
         can :create, Topic
         can :create, Post
         can :create, Reply
+        can :update, Post
+        can :update, Reply
         can :destroy, Reply
+        can :destroy, Post
       elsif user.regular?
-        can :read, :all
+        can :read, Topic
+        can :read, Post
+        can :read, Reply
         can :create, Post
         can :create, Reply
       else
-        can :read, :all
+        can :read, Topic
+        can :read, Post
+        can :read, Reply
     end
     # Define abilities for the passed in user here. For example:
     #

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :replies, :dependent => :destroy
 
   def assign_role
-    self.role = Role.find_by(name: "Regular") if self.role.nil?
+    self.role = Role.new(name: "Guest") if self.role.nil?
   end
 
  def admin?
