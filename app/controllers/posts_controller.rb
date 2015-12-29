@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    @post.topic_id = params[:topic_id]
   end
 
   # GET /posts/1/edit
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to @post.topic, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

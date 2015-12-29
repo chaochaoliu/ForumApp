@@ -18,4 +18,4 @@
 <% if can? :update, @reply %>
     <%= link_to 'Edit', edit_reply_path(@reply) %> 
 <% end %>
-<%= link_to 'Back', replies_path %>
+<%= link_to 'Back', @reply.post %>

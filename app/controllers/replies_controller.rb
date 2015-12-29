@@ -14,6 +14,7 @@ class RepliesController < ApplicationController
 
   # GET /replies/new
   def new
+    @reply.post_id = params[:post_id]
   end
 
   # GET /replies/1/edit
@@ -23,7 +24,8 @@ class RepliesController < ApplicationController
   # POST /replies
   # POST /replies.json
   def create
-    @reply.user_id = current_user.id
+    @reply = Reply.new(reply_params)
+    # @reply.post_id = params[:post_id]
 
     respond_to do |format|
       if @reply.save
@@ -53,9 +55,10 @@ class RepliesController < ApplicationController
   # DELETE /replies/1
   # DELETE /replies/1.json
   def destroy
+    @post = @reply.post
     @reply.destroy
     respond_to do |format|
-      format.html { redirect_to replies_url, notice: 'Reply was successfully destroyed.' }
+      format.html { redirect_to @post, notice: 'Reply was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

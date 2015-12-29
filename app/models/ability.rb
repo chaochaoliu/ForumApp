@@ -8,26 +8,14 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.manager?
-        can :read, Topic
-        can :read, Post
-        can :read, Reply
-        can :create, Topic
-        can :create, Post
-        can :create, Reply
-        can :update, Post
-        can :update, Reply
-        can :destroy, Reply
-        can :destroy, Post
+        can [:read, :create], [Topic, Post, Reply]
+        can :update, [Post, Reply]
+        can :destroy, [Reply. Post]
       elsif user.regular?
-        can :read, Topic
-        can :read, Post
-        can :read, Reply
-        can :create, Post
-        can :create, Reply
+        can :read, [Topic, Post, Reply]
+        can :create, [Post, Reply]
       else
-        can :read, Topic
-        can :read, Post
-        can :read, Reply
+        can :read, [Topic,Post, Reply]
     end
     # Define abilities for the passed in user here. For example:
     #

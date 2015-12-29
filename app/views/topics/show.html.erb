@@ -20,23 +20,16 @@
         <td><%= post.title %></td>
         <td><%= post.reply_count %></td>
         <td><%= link_to 'Show', post %></td>
-        <td>
-          <% if can? :update, post %>
-            <%=  link_to 'Edit', edit_post_path(post) %>
-          <% end %>
-       </td>
-        <td>
-          <% if can? :destroy, post %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        </td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<% if can? :create, Post %>
+  <%= link_to 'New Post', new_post_path(topic_id: @topic.id) %> <br><br>
+<% end %>
 
 <% if can? :update, Topic %>
-  <%= link_to 'Edit', edit_topic_path(@topic) %> 
+  <%= link_to 'Edit Topic', edit_topic_path(@topic) %> 
 <% end %>
 <%= link_to 'Back', topics_path %>
